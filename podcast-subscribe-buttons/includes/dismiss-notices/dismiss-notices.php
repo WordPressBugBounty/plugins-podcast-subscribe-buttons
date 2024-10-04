@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Persist Admin notices Dismissal
  *
- * Copyright (C) 2016 Collins Agbonghama <http://w3guy.com>
+ * Copyright (C) 2016 Collins Agbonghama <https://w3guy.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,10 +18,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @package Persist Admin notices Dismissal
- * @author  Collins Agbonghama
- * @author  Andy Fragen
+ * @author  Collins Agbonghama, Andy Fragen
  * @license http://www.gnu.org/licenses GNU General Public License
- * @version 1.4.1
  */
 
 /**
@@ -45,6 +42,24 @@ if ( ! class_exists( 'PAnD' ) ) {
 		public static function init() {
 			add_action( 'admin_enqueue_scripts', array( __CLASS__, 'load_script' ) );
 			add_action( 'wp_ajax_dismiss_admin_notice', array( __CLASS__, 'dismiss_admin_notice' ) );
+
+			/**
+			 * Filter to activate another filter providing a simpler use case.
+			 *
+			 * @since 1.4.3
+			 *
+			 * @param bool
+			 */
+			if ( apply_filters( 'pand_theme_loader', false ) ) {
+				add_filter(
+					'pand_dismiss_notice_js_url',
+					function( $js_url, $composer_path ) {
+						return get_stylesheet_directory_uri() . $composer_path;
+					},
+					10,
+					2
+				);
+			}
 		}
 
 		/**
@@ -56,11 +71,23 @@ if ( ! class_exists( 'PAnD' ) ) {
 				return;
 			}
 
+			$js_url        = plugins_url( 'dismiss-notice.js', __FILE__ );
+			$composer_path = '/vendor/collizo4sky/persist-admin-notices-dismissal/dismiss-notice.js';
+
+			/**
+			 * Filter dismiss-notice.js URL.
+			 *
+			 * @since 1.4.3
+			 *
+			 * @param string $js_url URL to the Javascript file.
+			 * @param string $composer_path Relative path of Javascript file from composer install.
+			 */
+			$js_url = apply_filters( 'pand_dismiss_notice_js_url', $js_url, $composer_path );
 			wp_enqueue_script(
 				'dismissible-notices',
-				plugins_url( 'dismiss-notice.js', __FILE__ ),
+				$js_url,
 				array( 'jquery', 'common' ),
-				false,
+				'1.4.5',
 				true
 			);
 
@@ -78,12 +105,12 @@ if ( ! class_exists( 'PAnD' ) ) {
 		 * Uses check_ajax_referer to verify nonce.
 		 */
 		public static function dismiss_admin_notice() {
-			$option_name        = sanitize_text_field( $_POST['option_name'] );
-			$dismissible_length = sanitize_text_field( $_POST['dismissible_length'] );
+			$option_name        = isset( $_POST['option_name'] ) ? sanitize_text_field( wp_unslash( $_POST['option_name'] ) ) : '';
+			$dismissible_length = isset( $_POST['dismissible_length'] ) ? sanitize_text_field( wp_unslash( $_POST['dismissible_length'] ) ) : 0;
 
-			if ( 'forever' != $dismissible_length ) {
-				// If $dismissible_length is not an integer default to 1
-				$dismissible_length = ( 0 == absint( $dismissible_length ) ) ? 1 : $dismissible_length;
+			if ( 'forever' !== $dismissible_length ) {
+				// If $dismissible_length is not an integer default to 1.
+				$dismissible_length = ( 0 === absint( $dismissible_length ) ) ? 1 : $dismissible_length;
 				$dismissible_length = strtotime( absint( $dismissible_length ) . ' days' );
 			}
 
@@ -104,7 +131,8 @@ if ( ! class_exists( 'PAnD' ) ) {
 			$length      = array_pop( $array );
 			$option_name = implode( '-', $array );
 			$db_record   = self::get_admin_notice_cache( $option_name );
-			if ( 'forever' == $db_record ) {
+
+			if ( 'forever' === $db_record ) {
 				return false;
 			} elseif ( absint( $db_record ) >= time() ) {
 				return false;

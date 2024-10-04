@@ -54,10 +54,13 @@ Sure. If you feel something is missing, please reach out and we will ensure to a
 
 == Changelog ==
 
-= 1.5.0 =
+= 1.5.2 =
+* Fixed: Dismiss noticed
+
+= 1.5.1 =
 * Added: New icons: AntennaPod, Anytime Player, Aurelian, Castamatic, HyperCatcher, iCatcher, Podcast Guru
 
-= 1.4.9 =
+= 1.5.0 =
 * Fixed: Broken styles for button colors.
 
 = 1.4.9 =
