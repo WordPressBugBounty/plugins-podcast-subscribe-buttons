@@ -2,7 +2,7 @@
 /*
 Plugin Name: Podcast Subscribe Buttons
 Description: Easily add custom subscribe (follow) buttons for any podcasting platform or podcast destination
-Version: 1.5.3
+Version: 1.5.4
 Author: SecondLine Themes
 Author URI: https://secondlinethemes.com
 Author Email: support@secondlinethemes.com
@@ -60,7 +60,7 @@ function secondline_psb_extend_allowed_protocols( $protocols ) {
 
     return $protocols;
 }
-add_filter( 'kses_allowed_protocols' , 'wporg_extend_allowed_protocols' );
+add_filter( 'kses_allowed_protocols' , 'secondline_psb_extend_allowed_protocols' );
 
 
 

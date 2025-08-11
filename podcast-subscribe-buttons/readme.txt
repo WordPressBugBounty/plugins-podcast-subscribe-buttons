@@ -54,6 +54,9 @@ Sure. If you feel something is missing, please reach out and we will ensure to a
 
 == Changelog ==
 
+= 1.5.4 =
+* Fix: broken 1.5.3 update fixed.
+
 = 1.5.3 =
 * Tweak: improve additional deep-link protocols.
 
