@@ -208,6 +208,24 @@ add_action( 'cmb2_admin_init', function() {
 		'name' => 'Link',
 		'id'   => $prefix . 'subscribe_url',
 		'type' => 'text_url',
+		// Allow deep-link app schemes in addition to WP defaults
+		'protocols' => array_merge( wp_allowed_protocols(), array(
+			'spotify',
+			'castro',
+			'icatcher',
+			'overcast',
+			'downcast',
+			'pocketcasts',
+			'pcast',
+			'podcast',
+			'podcasts',
+			'podcastrepublic',
+			'podcastaddict',
+			'castbox',
+			'podbean',
+			'stitcher',
+			'tunein'
+		)),
 	) );
 	
 	$secondline_psb_cmb_demo->add_group_field( $slt_subscribe_group_field_id, array(

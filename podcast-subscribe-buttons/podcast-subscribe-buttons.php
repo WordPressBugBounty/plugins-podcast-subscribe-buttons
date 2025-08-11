@@ -2,7 +2,7 @@
 /*
 Plugin Name: Podcast Subscribe Buttons
 Description: Easily add custom subscribe (follow) buttons for any podcasting platform or podcast destination
-Version: 1.5.2
+Version: 1.5.3
 Author: SecondLine Themes
 Author URI: https://secondlinethemes.com
 Author Email: support@secondlinethemes.com
@@ -26,14 +26,38 @@ function secondline_psb_theme_elements_buttons() {
 }
 
 /**
- * Extend list of allowed protocols.
+ * Extend list of allowed protocols so deep links to apps are preserved.
  *
  * @param array $protocols List of default protocols allowed by WordPress.
- *
- * @return array $protocols Updated list including new protocols.
+ * @return array Updated list including additional app schemes.
  */
-function wporg_extend_allowed_protocols( $protocols ){
-    $protocols[] = 'spotify';
+function secondline_psb_extend_allowed_protocols( $protocols ) {
+    $custom_schemes = array(
+        // Known podcast app schemes
+        'spotify',
+        'aurelian',
+        'castro',
+        'icatcher',
+        'overcast',
+        'downcast',
+        'pocketcasts',
+        'pcast',
+        'podcast',
+        'podcasts',
+        'podcastrepublic',
+        'podcastaddict',
+        'castbox',
+        'podbean',
+        'stitcher',
+        'tunein'
+    );
+
+    foreach ( $custom_schemes as $scheme ) {
+        if ( ! in_array( $scheme, $protocols, true ) ) {
+            $protocols[] = $scheme;
+        }
+    }
+
     return $protocols;
 }
 add_filter( 'kses_allowed_protocols' , 'wporg_extend_allowed_protocols' );

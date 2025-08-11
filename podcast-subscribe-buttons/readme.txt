@@ -54,8 +54,11 @@ Sure. If you feel something is missing, please reach out and we will ensure to a
 
 == Changelog ==
 
+= 1.5.3 =
+* Tweak: improve additional deep-link protocols.
+
 = 1.5.2 =
-* Fixed: Dismiss noticed
+* Fixed: Dismiss noticed.
 
 = 1.5.1 =
 * Added: New icons: AntennaPod, Anytime Player, Aurelian, Castamatic, HyperCatcher, iCatcher, Podcast Guru
