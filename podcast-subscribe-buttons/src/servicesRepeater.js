@@ -46,7 +46,7 @@ const ServicesRepeater = ({repeat_subscribe, setAttributes}) => {
         // Have at least 1 service
         if( the_services.length == 0 ) {
             the_services = [{
-                secondline_psb_subscribe_platform: 'Acast',
+                secondline_psb_subscribe_platform: 'Beamly',
                 secondline_psb_subscribe_url: 'https://',
                 secondline_psb_custom_link_label: 'sample'
             }];
@@ -56,7 +56,7 @@ const ServicesRepeater = ({repeat_subscribe, setAttributes}) => {
     const handleAdd = (  event ) => {
         let the_services = [...repeat_subscribe];
         the_services.push({
-            secondline_psb_subscribe_platform: 'Acast',
+            secondline_psb_subscribe_platform: 'Beamly',
             secondline_psb_subscribe_url: 'https://',
             secondline_psb_custom_link_label: 'label'
         });
@@ -71,6 +71,7 @@ const ServicesRepeater = ({repeat_subscribe, setAttributes}) => {
                             label={__("Subscribe Platform",'secondline-psb-custom-buttons')}
                             value={ service.secondline_psb_subscribe_platform }
                             options={ [
+                                { label: 'Beamly', value: 'Beamly' },
                                 { label: 'Acast', value: 'Acast' },
                                 { label: 'Amazon Alexa', value: 'Amazon-Alexa' },
                                 { label: 'Amazon Music', value: 'Amazon-Music' },

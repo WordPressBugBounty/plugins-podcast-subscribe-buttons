@@ -114,6 +114,7 @@ add_action( 'cmb2_admin_init', function() {
 		'id'   => $prefix . 'subscribe_platform',
 		'type' => 'select',
 		'options' => array(
+			'Beamly' => esc_attr__( 'Beamly', 'secondline-psb-custom-buttons' ),
 			'Acast' => esc_attr__( 'Acast', 'secondline-psb-custom-buttons' ),
 			'Amazon-Alexa' => esc_attr__( 'Amazon Alexa', 'secondline-psb-custom-buttons' ),
 			'Amazon-Music' => esc_attr__( 'Amazon Music', 'secondline-psb-custom-buttons' ),

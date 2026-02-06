@@ -2,7 +2,7 @@
 /*
 Plugin Name: Podcast Subscribe Buttons
 Description: Easily add custom subscribe (follow) buttons for any podcasting platform or podcast destination
-Version: 1.5.4
+Version: 1.5.5
 Author: SecondLine Themes
 Author URI: https://secondlinethemes.com
 Author Email: support@secondlinethemes.com
@@ -225,7 +225,7 @@ function secondline_psb_subscribe_shortcode( $atts ) {
 	    SECONDLINE_PSB_PREFIX . 'text_color_hover' => '',
 	    SECONDLINE_PSB_PREFIX . 'repeat_subscribe' => [
 	            [
-		            SECONDLINE_PSB_PREFIX . 'subscribe_platform' => 'Acast',
+		            SECONDLINE_PSB_PREFIX . 'subscribe_platform' => 'Beamly',
 		            SECONDLINE_PSB_PREFIX . 'subscribe_url' => 'https://',
 		            SECONDLINE_PSB_PREFIX . 'custom_link_label' => 'label'
                 ]

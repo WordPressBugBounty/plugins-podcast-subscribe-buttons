@@ -3,7 +3,7 @@ Contributors: secondlinethemes
 Donate link: https://secondlinethemes.com/
 Tags: podcast, subscribe, spotify, apple, icons
 Requires at least: 3.8
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 7.0
 Stable tag: trunk
 License: GPLv3 or later
@@ -14,7 +14,7 @@ Add beautiful podcast subscribe buttons anywhere.
 == Description ==
 
 This free plugin helps to easily include 90+ custom and Podcast-specific Subscribe/Follow Buttons anywhere within your site directly via the editor or with a simple shortcode. 
-The plugin supports all the major platforms like Spotify, Apple Podcasts, Castbox, YouTube, TuneIn and dozens of others. 
+The plugin supports all the major platforms like [Spotify](https://spotify.com), Apple Podcasts, Castbox, YouTube, TuneIn, [Beamly](https://beamly.com) and dozens of others. 
 The Podcast Subscribe Buttons are intended for podcasters and therefore the list of companies/icons only include podcast-related companies. (Need a new icon? Let us know!)
 
 With the Podcast Subscribe Buttons plugin, you could display links to subscribe to your podcast across various external podcast platforms, those links may include regular links to your pages on external podcast platforms, direct links to RSS feeds, or URI links to open directly in an external application. 
@@ -53,6 +53,9 @@ Sure. If you feel something is missing, please reach out and we will ensure to a
 3. Show a list of buttons on your sidebar or within posts and pages.
 
 == Changelog ==
+
+= 1.5.5 =
+* Update: added new buttons.
 
 = 1.5.4 =
 * Fix: broken 1.5.3 update fixed.

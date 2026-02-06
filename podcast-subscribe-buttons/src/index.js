@@ -51,7 +51,7 @@ registerBlockType( 'secondline-themes/podcast-subscribe-button', {
             type: 'array',
             default: [
                 {
-                    secondline_psb_subscribe_platform: 'Acast',
+                    secondline_psb_subscribe_platform: 'Beamly',
                     secondline_psb_subscribe_url: 'https://',
                     secondline_psb_custom_link_label: __('sample','secondline-psb-custom-buttons')
                 }
